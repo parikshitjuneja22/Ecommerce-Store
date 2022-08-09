@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
+const authRoutes = require("./routes/auth");
+
 const app = express();
 
 // Middlewares
@@ -26,6 +28,4 @@ mongoose
 .then(() => console.log('MongoDB connected!'))
 .catch(err => console.log('Error:- ' + err));
 
-app.get("/", (req, res) => {
-    res.send("Hello");
-});
+app.use("/api", authRoutes);

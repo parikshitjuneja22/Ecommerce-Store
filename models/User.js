@@ -44,9 +44,9 @@ var userSchema = new mongoose.Schema({
     }
 });
 
-userSchema.method = {
+userSchema.methods = {
     securePassword: function (plainPassword) {
-        if (!password) return "";
+        if (!plainPassword) return "";
         try {
             return crypto.createHmac('sha256', this.salt)
                 .update(plainPassword)
